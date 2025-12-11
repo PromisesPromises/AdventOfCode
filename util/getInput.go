@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/http/cookiejar"
 	urllib "net/url"
+	"strings"
 )
 
 func GetInput(url string, session_cookie string) string {
@@ -15,10 +16,11 @@ func GetInput(url string, session_cookie string) string {
 	// content, _ := os.ReadFile(input_file)
 	// return string(content)
 	// }
-	content := querySite(url, session_cookie)
+	content := string(querySite(url, session_cookie))
+	content = strings.Trim(content, "\n")
 	// os.WriteFile(input_file, content, os.FileMode(0700))
 	// log.Println("input file: " + input_file)
-	return string(content)
+	return content
 }
 
 func querySite(url string, session_cookie string) []byte {
