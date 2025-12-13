@@ -2,7 +2,6 @@ package util
 
 import (
 	"io"
-	"log"
 	"net/http"
 	"net/http/cookiejar"
 	urllib "net/url"
@@ -26,7 +25,7 @@ func GetInput(url string, session_cookie string) string {
 func querySite(url string, session_cookie string) []byte {
 	jar, _ := cookiejar.New(nil)
 	u, _ := urllib.Parse(url)
-	log.Println("using cookie:", session_cookie)
+	// log.Println("using cookie:", session_cookie)
 	jar.SetCookies(u, []*http.Cookie{
 		{
 			Name:  "session",
